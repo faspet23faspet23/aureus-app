@@ -1,0 +1,30 @@
+name: Build macOS DMG
+
+on:
+  push:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  build-macos:
+    runs-on: macos-12
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Build DMG Package
+        run: npm run build:mac
+
+      - name: Upload DMG Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: Aureus-macOS-Installer
+          path: dist/*.dmg
