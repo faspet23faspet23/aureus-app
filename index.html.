@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-slate-950">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aureus | Executive RSS Newsroom</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts for Upmarket Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            gold: {
+              300: '#f6e05e',
+              400: '#e5c158',
+              500: '#d4af37',
+              600: '#aa8c2c',
+              700: '#806921'
+            },
+            obsidian: {
+              900: '#0b0f17',
+              800: '#111827',
+              700: '#1f293d',
+              600: '#2d3748'
+            }
+          },
+          fontFamily: {
+            cinzel: ['Cinzel', 'serif'],
+            playfair: ['Playfair Display', 'serif'],
+            sans: ['Inter', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom Luxury Styling */
+    body {
+      background: radial-gradient(circle at 50% 0%, #1a2236 0%, #080b11 75%);
+      color: #e2e8f0;
+      font-family: 'Inter', sans-serif;
+    }
+    
+    .gold-gradient-text {
+      background: linear-gradient(135deg, #fff2aa 0%, #d4af37 50%, #aa8c2c 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .gold-border-glow {
+      box-shadow: 0 0 15px rgba(212, 175, 55, 0.15);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+    }
+
+    .gold-border-glow:hover {
+      box-shadow: 0 0 25px rgba(212, 175, 55, 0.3);
+      border-color: rgba(212, 175, 55, 0.6);
+    }
+
+    .glass-panel {
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0b0f17;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #2d3748;
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #d4af37;
+    }
+
+    .line-clamp-2 {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .line-clamp-3 {
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body class="h-full flex flex-col overflow-hidden select-none">
+
+  <!-- Top Executive Header Navbar -->
+  <header class="glass-panel border-b border-gold-500/20 px-6 py-3.5 flex items-center justify-between shrink-0 z-30">
+    <div class="flex items-center space-x-4">
+      <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-gold-400 via-gold-600 to-amber-900 p-0.5 shadow-lg shadow-gold-500/10">
+        <div class="w-full h-full bg-slate-950 rounded-[7px] flex items-center justify-center">
+          <i class="fa-solid font-cinzel text-gold-400 font-bold text-xl">A</i>
+        </div>
+      </div>
+      <div>
+        <h1 class="font-cinzel tracking-wider font-bold text-lg gold-gradient-text">A U R E U S</h1>
+        <p class="text-[10px] text-slate-400 uppercase tracking-widest font-semibold">Executive Intelligence Hub</p>
+      </div>
+    </div>
+
+    <!-- Central Search & Controls -->
+    <div class="flex-1 max-w-xl mx-8">
+      <div class="relative">
+        <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+        <input type="text" id="searchInput" placeholder="Search headline intelligence, topics, tickers, analysis..." 
+          class="w-full pl-11 pr-10 py-2 bg-slate-900/90 rounded-full text-xs border border-slate-700/60 focus:border-gold-500/60 focus:ring-1 focus:ring-gold-500/40 text-slate-200 placeholder-slate-500 transition-all outline-none">
+        <button id="clearSearchBtn" class="hidden absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-200">
+          <i class="fa-solid fa-xmark text-xs"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Status & Actions -->
+    <div class="flex items-center space-x-5 text-xs">
+      <!-- Live Sync Indicator -->
+      <div class="hidden md:flex items-center space-x-2.5 bg-slate-900/80 px-3.5 py-1.5 rounded-full border border-slate-800">
+        <span class="relative flex h-2.5 w-2.5">
+          <span id="pulseBadge" class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+          <span id="statusDot" class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+        </span>
+        <span id="syncText" class="text-slate-300 font-medium">Auto-Sync Active</span>
+        <span class="text-slate-600">|</span>
+        <span id="countdownTimer" class="text-gold-400 font-mono font-semibold">05:00</span>
+      </div>
+
+      <!--
