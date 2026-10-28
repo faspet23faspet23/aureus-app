@@ -1,0 +1,24 @@
+{
+  "name": "aureus-rss-newsroom",
+  "version": "1.0.0",
+  "description": "Aureus Executive RSS Newsroom Desktop App",
+  "main": "main.js",
+  "scripts": {
+    "build:mac": "electron-builder -m --x64"
+  },
+  "devDependencies": {
+    "electron": "^28.0.0",
+    "electron-builder": "^24.9.0"
+  },
+  "build": {
+    "appId": "com.aureus.newsroom",
+    "productName": "Aureus",
+    "mac": {
+      "category": "public.app-category.news",
+      "target": ["dmg"]
+    },
+    "dmg": {
+      "filesystem": "HFS+"
+    }
+  }
+}
